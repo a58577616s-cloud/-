@@ -1,0 +1,24 @@
+import React from 'react';
+import { HashRouter, Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Gallery from './pages/Gallery';
+import AILab from './pages/AILab';
+
+const App = () => (
+  <HashRouter>
+    <nav className="p-4 border-b flex justify-between bg-white sticky top-0 z-50">
+      <Link to="/" className="text-xl font-bold">LUMINA</Link>
+      <div className="space-x-4">
+        <Link to="/">首頁</Link>
+        <Link to="/gallery">作品集</Link>
+        <Link to="/ai-lab">AI 實驗室</Link>
+      </div>
+    </nav>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/gallery" element={<Gallery />} />
+      <Route path="/ai-lab" element={<AILab />} />
+    </Routes>
+  </HashRouter>
+);
+export default App;

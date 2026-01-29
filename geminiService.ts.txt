@@ -1,0 +1,8 @@
+import React from 'react';
+const Home = () => (
+  <div className="p-10 text-center">
+    <h1 className="text-4xl font-bold">歡迎來到 Lumina 室內設計</h1>
+    <p className="mt-4 text-gray-500">結合 AI 與美學的空間改造專家</p>
+  </div>
+);
+export default Home;

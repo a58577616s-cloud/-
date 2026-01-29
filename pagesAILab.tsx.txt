@@ -1,0 +1,32 @@
+import React, { useState } from 'react';
+import { generateDesignConcept } from '../geminiService';
+
+const AILab = () => {
+  const [prompt, setPrompt] = useState('');
+  const [img, setImg] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleGen = async () => {
+    setLoading(true);
+    const result = await generateDesignConcept(prompt);
+    if (result) setImg(result);
+    setLoading(false);
+  };
+
+  return (
+    <div className="p-10">
+      <h2 className="text-2xl font-bold mb-4">AI 靈感生成器</h2>
+      <input 
+        className="border p-2 w-full mb-4" 
+        placeholder="輸入你的夢想房間描述..." 
+        value={prompt} 
+        onChange={e => setPrompt(e.target.value)}
+      />
+      <button onClick={handleGen} className="bg-black text-white px-4 py-2 rounded">
+        {loading ? '生成中...' : '生成圖片'}
+      </button>
+      {img && <img src={img} className="mt-4 w-full rounded" />}
+    </div>
+  );
+};
+export default AILab;
